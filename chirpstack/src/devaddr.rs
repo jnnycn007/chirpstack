@@ -1,8 +1,8 @@
-use rand::RngCore;
+use lrwn::DevAddr;
+use rand::Rng;
+use rand::seq::IndexedRandom;
 
 use crate::config;
-use lrwn::DevAddr;
-use rand::seq::IndexedRandom;
 
 pub fn get_random_dev_addr() -> DevAddr {
     let conf = config::get();

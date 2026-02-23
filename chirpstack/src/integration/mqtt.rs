@@ -6,7 +6,7 @@ use anyhow::Result;
 use async_trait::async_trait;
 use handlebars::Handlebars;
 use prost::Message;
-use rand::Rng;
+use rand::RngExt;
 use regex::Regex;
 use rumqttc::Transport;
 use rumqttc::tokio_rustls::rustls;
@@ -457,7 +457,7 @@ pub mod test {
         .unwrap();
         let dp = device_profile::create(device_profile::DeviceProfile {
             name: "test-dp".into(),
-            tenant_id: t.id,
+            tenant_id: Some(t.id),
             ..Default::default()
         })
         .await

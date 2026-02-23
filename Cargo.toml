@@ -27,15 +27,19 @@
     urlencoding = "2.1"
     serde_urlencoded = "0.7"
     humantime-serde = "1.1"
-    toml = "0.9"
+    toml = { version = "1.0", default-features = false, features = [
+      "std",
+      "parse",
+      "serde",
+    ] }
     geohash = "0.13"
     url = "2.5"
 
     # Crypto
     cmac = "0.7"
     aes = "0.8"
-    rand = "0.9"
-    getrandom = "0.3"
+    rand = "0.10"
+    getrandom = "0.4"
     aes-kw = "0.2"
     hmac = "0.12"
     sha2 = "0.10"
@@ -69,8 +73,8 @@
     tokio-postgres = { version = "0.7" }
     tokio-postgres-rustls = { version = "0.13" }
     bigdecimal = "0.4"
-    redis = { version = "0.32", features = ["tls-rustls", "tokio-rustls-comp"] }
-    deadpool-redis = { version = "0.22", features = ["cluster", "serde"] }
+    redis = { version = "1.0", features = ["tls-rustls", "tokio-rustls-comp"] }
+    deadpool-redis = { version = "0.23", features = ["cluster", "serde"] }
 
     # Error
     thiserror = "2.0"
@@ -152,7 +156,8 @@
     dotenv = "0.15"
 
     # Integrations
-    lapin = { version = "3.7", default-features = false, features = [
+    lapin = { version = "4.0", default-features = false, features = [
+      "tokio",
       "rustls--ring",
       "rustls-native-certs",
     ] }

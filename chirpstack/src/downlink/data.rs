@@ -5,7 +5,7 @@ use std::time::Duration;
 
 use anyhow::{Context, Result};
 use chrono::{DateTime, Utc};
-use rand::Rng;
+use rand::RngExt;
 use tracing::{Instrument, Level, debug, span, trace, warn};
 
 use crate::api::backend::get_async_receiver;

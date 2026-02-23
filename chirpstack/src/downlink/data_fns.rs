@@ -1,7 +1,7 @@
 use std::str::FromStr;
 
 use anyhow::{Context, Result};
-use rand::Rng;
+use rand::RngExt;
 use tracing::{Instrument, Level, span, trace};
 
 use super::helpers;

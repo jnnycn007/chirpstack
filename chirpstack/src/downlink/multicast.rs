@@ -5,7 +5,7 @@ use chrono::Utc;
 use petgraph::algo::min_spanning_tree;
 use petgraph::data::FromElements;
 use petgraph::graph::{DefaultIx, Graph, NodeIndex, UnGraph};
-use rand::Rng;
+use rand::RngExt;
 use tracing::{Instrument, Level, span, trace, warn};
 
 use crate::downlink::{error::Error, helpers};

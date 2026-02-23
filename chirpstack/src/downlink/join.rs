@@ -3,7 +3,7 @@ use std::sync::Arc;
 use std::time::Duration;
 
 use anyhow::{Context, Result};
-use rand::Rng;
+use rand::RngExt;
 use tracing::{Instrument, Level, span, trace};
 
 use lrwn::{EUI64, PhyPayload};

@@ -10,7 +10,7 @@ use prometheus_client::encoding::EncodeLabelSet;
 use prometheus_client::metrics::counter::Counter;
 use prometheus_client::metrics::family::Family;
 use prost::Message;
-use rand::Rng;
+use rand::RngExt;
 use rumqttc::Transport;
 use rumqttc::tokio_rustls::rustls;
 use rumqttc::v5::mqttbytes::v5::{ConnectReturnCode, Publish};

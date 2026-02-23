@@ -2,7 +2,7 @@ use std::str::FromStr;
 use std::sync::Arc;
 
 use anyhow::{Context, Result};
-use rand::Rng;
+use rand::RngExt;
 use tracing::{Instrument, Level, span, trace};
 
 use super::helpers;
