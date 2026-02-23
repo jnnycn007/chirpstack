@@ -8,6 +8,7 @@ diesel::table! {
         name -> Varchar,
         is_admin -> Bool,
         tenant_id -> Nullable<Uuid>,
+        is_read_only -> Bool,
     }
 }
 

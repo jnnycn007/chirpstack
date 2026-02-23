@@ -7,6 +7,7 @@ diesel::table! {
         name -> Text,
         is_admin -> Bool,
         tenant_id -> Nullable<Text>,
+        is_read_only -> Bool,
     }
 }
 

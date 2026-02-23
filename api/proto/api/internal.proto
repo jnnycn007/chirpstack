@@ -83,6 +83,9 @@ message ApiKey {
   // Tenant ID.
   // In case the API key is intended to manage resources under a single tenant.
   string tenant_id = 4;
+
+  // Is read-only.
+  bool is_read_only = 5;
 }
 
 message CreateApiKeyRequest {

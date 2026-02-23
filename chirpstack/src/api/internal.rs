@@ -312,6 +312,7 @@ impl InternalService for Internal {
             name: req_key.name.clone(),
             is_admin: req_key.is_admin,
             tenant_id: tenant_id.map(|u| u.into()),
+            is_read_only: req_key.is_read_only,
             ..Default::default()
         };
 
@@ -397,6 +398,7 @@ impl InternalService for Internal {
                         Some(v) => v.to_string(),
                         None => "".to_string(),
                     },
+                    is_read_only: ak.is_read_only,
                 })
                 .collect(),
         }))

@@ -32,6 +32,19 @@ function ListAdminApiKeys() {
       key: "name",
     },
     {
+      title: "Read only",
+      dataIndex: "isReadOnly",
+      key: "isReadOnly",
+      width: 150,
+      render: (_, record) => {
+        if (record.isReadOnly) {
+          return "yes";
+        } else {
+          return "no";
+        }
+      },
+    },
+    {
       title: "Action",
       dataIndex: "id",
       key: "action",
