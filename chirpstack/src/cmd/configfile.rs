@@ -405,7 +405,7 @@ pub fn run() {
     # Use JSON encoding instead of Protobuf (binary).
     json={{ integration.mqtt.json }}
 
-    # MQTT server (e.g. scheme://host:port where scheme is tcp, ssl or ws)
+    # MQTT server (e.g. scheme://host:port where scheme is tcp, ssl)
     server="{{ integration.mqtt.server }}"
 
     # Connect with the given username (optional)
