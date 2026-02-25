@@ -148,9 +148,16 @@ impl<'a> Integration<'a> {
         tokio::spawn({
             let client = i.client.clone();
             let qos = i.qos;
+            let share_name = conf.share_name.clone();
 
             async move {
-                while connect_rx.recv().await.is_some() {
+                while let Some(shared_sub_support) = connect_rx.recv().await {
+                    let command_topic = if shared_sub_support {
+                        format!("$share/{}/{}", share_name, command_topic)
+                    } else {
+                        command_topic.clone()
+                    };
+
                     info!(command_topic = %command_topic, "Subscribing to command topic");
                     if let Err(e) = client.subscribe(&command_topic, qos).await {
                         error!(error = %e, "Subscribe to command topic error");
@@ -199,7 +206,18 @@ impl<'a> Integration<'a> {
                                 }
                                 Event::Incoming(Incoming::ConnAck(v)) => {
                                     if v.code == ConnectReturnCode::Success {
-                                        if let Err(e) = connect_tx.try_send(()) {
+                                        // Per specification:
+                                        // A value of 1 means Shared Subscriptions are supported. If not present, then Shared Subscriptions are supported.
+                                        let shared_sub_support = v
+                                            .properties
+                                            .map(|v| {
+                                                v.shared_subscription_available
+                                                    .map(|v| v == 1)
+                                                    .unwrap_or(true)
+                                            })
+                                            .unwrap_or(true);
+
+                                        if let Err(e) = connect_tx.try_send(shared_sub_support) {
                                             error!(error = %e, "Send to subscribe channel error");
                                         }
                                     } else {
