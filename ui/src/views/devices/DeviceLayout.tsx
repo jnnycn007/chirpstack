@@ -196,6 +196,14 @@ function DeviceLayout(props: IProps) {
               ),
             },
             {
+              key: "queue",
+              label: (
+                <Link to={`/tenants/${tenant.getId()}/applications/${app.getId()}/devices/${device.getDevEui()}/queue`}>
+                  Queue
+                </Link>
+              ),
+            },
+            {
               key: "events",
               label: (
                 <Link
